@@ -1,6 +1,9 @@
 package myapp.com.etc.lenovo.bascketball.Acticity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -33,16 +36,20 @@ public class MainActivity extends AppCompatActivity
     private String[] tabTitleArray = {"头条","热门","赛事","圈子","集锦","专栏","NBA","CBA"};
     private  List<Fragment> fragmentList = new ArrayList<Fragment>();
 
+
+    private BottomNavigationView bottomNaviView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //顶部工具栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //左边侧拉栏点击按钮
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -52,6 +59,25 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //底部工具栏
+        bottomNaviView = (BottomNavigationView) findViewById(R.id.bottom_navi_view);
+        bottomNaviView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_first:
+                        break;
+                    case R.id.menu_friends:
+                        break;
+                    case R.id.menu_foot:
+                        break;
+                }
+                return true;
+            }
+        });
+
+
+        //tablayout
         TabLayout tablayout = (TabLayout) findViewById(R.id.tablayout);
         for(int i=0;i<tabTitleArray.length;i++){
             tablayout.addTab(tablayout.newTab().setText(tabTitleArray[i]));
