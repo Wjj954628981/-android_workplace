@@ -15,11 +15,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import myapp.com.etc.lenovo.bascketball.Adapter.MyPagerAdapter;
+import myapp.com.etc.lenovo.bascketball.Adapter.ViewPagerAdapter;
+import myapp.com.etc.lenovo.bascketball.Fragment.foot_fragment;
+import myapp.com.etc.lenovo.bascketball.Fragment.friends_fragment;
+import myapp.com.etc.lenovo.bascketball.Fragment.main_fragment;
 import myapp.com.etc.lenovo.bascketball.R;
 import myapp.com.etc.lenovo.bascketball.Fragment.cba_fragment;
 import myapp.com.etc.lenovo.bascketball.Fragment.circle_fragment;
@@ -33,11 +39,10 @@ import myapp.com.etc.lenovo.bascketball.Fragment.tournament_fragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String[] tabTitleArray = {"头条","热门","赛事","圈子","集锦","专栏","NBA","CBA"};
-    private  List<Fragment> fragmentList = new ArrayList<Fragment>();
-
-
     private BottomNavigationView bottomNaviView;
+    private MenuItem menuItem;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         //底部工具栏
         bottomNaviView = (BottomNavigationView) findViewById(R.id.bottom_navi_view);
         bottomNaviView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,39 +72,62 @@ public class MainActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_first:
+                        viewPager.setCurrentItem(0);
                         break;
                     case R.id.menu_friends:
+                        viewPager.setCurrentItem(1);
                         break;
                     case R.id.menu_foot:
+                        viewPager.setCurrentItem(2);
                         break;
                 }
                 return true;
             }
         });
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        //tablayout
-        TabLayout tablayout = (TabLayout) findViewById(R.id.tablayout);
-        for(int i=0;i<tabTitleArray.length;i++){
-            tablayout.addTab(tablayout.newTab().setText(tabTitleArray[i]));
-        }
-        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+            }
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+            @Override
+            public void onPageSelected(int position) {
+                if (menuItem != null) {
+                    menuItem.setChecked(false);
+                } else {
+                    bottomNaviView.getMenu().getItem(0).setChecked(false);
+                }
+                menuItem = bottomNaviView.getMenu().getItem(position);
+                menuItem.setChecked(true);
+            }
 
-        fragmentList.add(new topline_fragment());
-        fragmentList.add(new hots_fragment());
-        fragmentList.add(new matchs_fragment());
-        fragmentList.add(new circle_fragment());
-        fragmentList.add(new tournament_fragment());
-        fragmentList.add(new columnist_fragment());
-        fragmentList.add(new nba_fragment());
-        fragmentList.add(new cba_fragment());
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
 
-        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(),fragmentList,tabTitleArray);
-        viewPager.setAdapter(myPagerAdapter);
+        //禁止ViewPager滑动
+//        viewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return true;
+//            }
+//        });
 
-        tablayout.setupWithViewPager(viewPager);
+        setupViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        Fragment main_fragment = new main_fragment();
+        Fragment friends_fragment = new friends_fragment();
+        Fragment foot_fragment = new foot_fragment();
+        adapter.addFragment(main_fragment);
+        adapter.addFragment(friends_fragment);
+        adapter.addFragment(foot_fragment);
+        viewPager.setAdapter(adapter);
     }
 
     @Override

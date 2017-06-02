@@ -1,6 +1,7 @@
 package myapp.com.etc.lenovo.bascketball.Adapter;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,6 +21,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter{
         this.tabTitleArray = tabTitleArray;
         this.fragmentList = fragmentList;
     }
+
     @Override
     public int getCount() {
         return tabTitleArray.length;
