@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,20 +159,23 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_team) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, TeamActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_collection) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, CollectionActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_message) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, MessageActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_setting) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, SettingActivity.class);
+            startActivity(intent);
         }
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
