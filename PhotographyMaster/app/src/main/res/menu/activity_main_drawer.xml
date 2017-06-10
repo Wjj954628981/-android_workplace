@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_what"
+        android:icon="@drawable/ic_brush_grey600_48dp"
+        android:title="什么是摄影" />
+
+    <item android:title="摄影流派">
+        <menu>
+            <item
+                android:id="@+id/nav_genre1"
+                android:icon="@drawable/ic_assistant_photo_grey600_48dp"
+                android:title="绘画主义摄影" />
+            <item
+                android:id="@+id/nav_genre2"
+                android:icon="@drawable/ic_assistant_photo_grey600_48dp"
+                android:title="印象派摄影"/>
+            <item
+                android:id="@+id/nav_genre3"
+                android:icon="@drawable/ic_assistant_photo_grey600_48dp"
+                android:title="写实摄影"/>
+        </menu>
+    </item>
+
+    <item android:title="摄影展示">
+        <menu>
+            <item
+                android:id="@+id/nav_show1"
+                android:icon="@drawable/ic_blur_circular_grey600_48dp"
+                android:title="静物摄影" />
+            <item
+                android:id="@+id/nav_show2"
+                android:icon="@drawable/ic_blur_circular_grey600_48dp"
+                android:title="人像摄影" />
+        </menu>
+    </item>
+
+</menu>

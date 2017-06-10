@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "566382893461",
+    "firebase_url": "https://photographymaster-777fb.firebaseio.com",
+    "project_id": "photographymaster-777fb",
+    "storage_bucket": "photographymaster-777fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566382893461:android:5f85792d02ac601c",
+        "android_client_info": {
+          "package_name": "cn.studyjams.s2.sj0119.PhotographyMaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566382893461-qcaf3k50eo9jflt264f4m5jh6g232afk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cn.studyjams.s2.sj0119.PhotographyMaster",
+            "certificate_hash": "a2ff9441526ce481d705b2fe7ec3ae972db45627"
+          }
+        },
+        {
+          "client_id": "566382893461-5bgudef9lu0jq8hfquium8rnrriig5oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4za8lw1qv8bwf7O8L1M9KwyxEBgKUpAE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566382893461-5bgudef9lu0jq8hfquium8rnrriig5oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
